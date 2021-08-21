@@ -15,8 +15,8 @@ class CompanyObserver
      */
     public function creating( Company $company )
     {
-        $company->url = Str::slug( $company->name, '-' );
-        $company->uuid = Str::uuid();
+        $company->url   = Str::slug( $company->name, '-' );
+        $company->uuid  = Str::uuid();
     }
 
     /**
@@ -27,7 +27,7 @@ class CompanyObserver
      */
     public function updating( Company $company )
     {
-        $company->url = Str::slug( $company->name, '-' );
+        $company->url   = Str::slug( $company->name, '-' );
     }
 
 } // CompanyObserver
