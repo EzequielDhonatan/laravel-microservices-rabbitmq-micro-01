@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Api\Register\Category;
+namespace App\Models\Api\V1\Register\Category;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

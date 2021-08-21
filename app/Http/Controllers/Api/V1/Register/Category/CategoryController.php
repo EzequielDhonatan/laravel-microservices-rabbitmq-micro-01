@@ -1,12 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Api\Register\Category;
+namespace App\Http\Controllers\Api\V1\Register\Category;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Api\V1\Register\Category\Category;
+use App\Http\Resources\Api\V1\Register\Category\CategoryResource;
+
 class CategoryController extends Controller
 {
+    protected $repository;
+
+    public function __construct( Category $model )
+    {
+        $this->repository = $model;
+
+    } // __construct
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return response()->json( [ 'categories' ] );
+        $categories = $this->repository->get();
+
+        return CategoryResource::collection( $categories );
     }
 
     /**
@@ -61,4 +73,5 @@ class CategoryController extends Controller
     {
         //
     }
-}
+
+} // CategoryController

@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\{
+use App\Http\Controllers\Api\V1\{
 
     /* REGISTER
     ================================================== */
@@ -15,6 +15,14 @@ Route::get ('/', function () {
     return response()->json( [ 'message' => 'success' ] );
 });
 
-/* CATEGORY
-================================================== */
-Route::apiResource( 'register/category', CategoryController::class ); ## CATEGORY
+Route::group(
+
+    [
+        'prefix'        => 'v1',
+    ], function () {
+
+    /* REGISTER
+    ================================================== */
+    Route::apiResource( 'register/category', CategoryController::class ); ## CATEGORY
+
+}); // Route::group
