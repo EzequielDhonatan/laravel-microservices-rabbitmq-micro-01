@@ -6,13 +6,14 @@ use Illuminate\Support\ServiceProvider;
 
 use App\Models\Api\V1\{
 
-    Category\Category
+    Category\Category,
+    Company\Company
 
 }; // Models
-
 use App\Observers\Api\V1\{
 
-    Category\CategoryObserver
+    Category\CategoryObserver,
+    Company\CompanyObserver
 
 }; // Observers
 
@@ -35,7 +36,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Category::observe( CategoryObserver::class );
+        Category::observe( CategoryObserver::class ); ## CATEGORY
+        Company::observe( CompanyObserver::class ); ## COMPANY
     }
 
 } // AppServiceProvider

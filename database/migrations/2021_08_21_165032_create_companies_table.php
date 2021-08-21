@@ -20,7 +20,7 @@ class CreateCompaniesTable extends Migration
             ================================================== */
             $table->uuid( 'uuid' )->unique(); ## UUID
 
-            $table->foreignId( 'cactegory_id' )->constrained( 'categories' ); ## CATEGORIA
+            $table->foreignId( 'category_id' )->constrained( 'categories' ); ## CATEGORIA
 
             $table->string( 'name' )->unique(); ## NOME
             $table->string( 'url' )->unique(); ## URL

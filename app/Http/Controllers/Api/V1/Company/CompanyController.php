@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Api\V1\Company\Company;
 use App\Http\Resources\Api\V1\Company\CompanyResource;
+use App\Http\Requests\Api\V1\Company\StoreUpdateFormRequest;
 
 class CompanyController extends Controller
 {
@@ -36,9 +37,11 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( StoreUpdateFormRequest $request )
     {
-        //
+        $company = $this->repository->create( $request->validated() );
+
+        return new CompanyResource( $company );
     }
 
     /**
