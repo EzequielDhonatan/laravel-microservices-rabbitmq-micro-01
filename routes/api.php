@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\V1\{
 
-    /* REGISTER
+    /*
     ================================================== */
-    Register\Category\CategoryController, ## CATEGORY
+    Category\CategoryController, ## CATEGORY
 
 }; // Controllers
 
@@ -21,8 +21,8 @@ Route::group(
         'prefix'        => 'v1',
     ], function () {
 
-    /* REGISTER
+    /*
     ================================================== */
-    Route::apiResource( 'register/category', CategoryController::class ); ## CATEGORY
+    Route::apiResource( 'category', CategoryController::class ); ## CATEGORY
 
 }); // Route::group

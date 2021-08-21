@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Register\Category;
+namespace App\Http\Controllers\Api\V1\Category;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Api\V1\Register\Category\Category;
-use App\Http\Resources\Api\V1\Register\Category\CategoryResource;
-use App\Http\Requests\Api\V1\Register\Category\StoreUpdateFormRequest;
+use App\Models\Api\V1\Category\Category;
+use App\Http\Resources\Api\V1\Category\CategoryResource;
+use App\Http\Requests\Api\V1\Category\StoreUpdateFormRequest;
 
 class CategoryController extends Controller
 {

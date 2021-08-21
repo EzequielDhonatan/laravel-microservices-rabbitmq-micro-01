@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Observers\Api\V1\Register\Category;
+namespace App\Observers\Api\V1\Category;
 
-use App\Models\Api\V1\Register\Category\Category;
+use App\Models\Api\V1\Category\Category;
 use Illuminate\Support\Str;
 
 class CategoryObserver
@@ -10,7 +10,7 @@ class CategoryObserver
     /**
      * Handle the Category "creating" event.
      *
-     * @param  \App\Models\Api\V1\Register\Category\Category  $category
+     * @param  \App\Models\Api\V1\Category\Category  $category
      * @return void
      */
     public function creating( Category $category )
@@ -21,7 +21,7 @@ class CategoryObserver
     /**
      * Handle the Category "updating" event.
      *
-     * @param  \App\Models\Api\V1\Register\Category\Category  $category
+     * @param  \App\Models\Api\V1\Category\Category  $category
      * @return void
      */
     public function updating( Category $category )

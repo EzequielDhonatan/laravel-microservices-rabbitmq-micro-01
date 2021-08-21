@@ -6,13 +6,13 @@ use Illuminate\Support\ServiceProvider;
 
 use App\Models\Api\V1\{
 
-    Register\Category\Category
+    Category\Category
 
 }; // Models
 
 use App\Observers\Api\V1\{
 
-    Register\Category\CategoryObserver
+    Category\CategoryObserver
 
 }; // Observers
 

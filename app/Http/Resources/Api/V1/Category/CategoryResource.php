@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Api\V1\Register\Category;
+namespace App\Http\Resources\Api\V1\Category;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
