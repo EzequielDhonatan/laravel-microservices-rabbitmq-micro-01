@@ -81,6 +81,10 @@ class CompanyController extends Controller
      */
     public function destroy( $uuid )
     {
-        //
+        $company = $this->repository->where( 'uuid', $uuid )->firstOrFail(); // Recupera pelo "UUID"
+
+        $company->delete(); // Deleta
+
+        return response()->json( [], 204 ); // Retornar a resposta de sucesso [Destroy]
     }
 }
