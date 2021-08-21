@@ -26,9 +26,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = $this->repository->with( 'category' )->latest()->paginate();
+        $companies = $this->repository->with( 'category' )->latest()->paginate(); // Lista, ordena e pagina
 
-        return CompanyResource::collection( $companies );
+        return CompanyResource::collection( $companies ); // Retorna uma "Resource/Collection"
     }
 
     /**
@@ -39,9 +39,9 @@ class CompanyController extends Controller
      */
     public function store( StoreUpdateFormRequest $request )
     {
-        $company = $this->repository->create( $request->validated() );
+        $company = $this->repository->create( $request->validated() ); // Cadastra
 
-        return new CompanyResource( $company );
+        return new CompanyResource( $company ); // Retorna uma "Resource/Collection"
     }
 
     /**
