@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\V1\{
     /*
     ================================================== */
     Category\CategoryController, ## CATEGORY
+    Company\CompanyController, ## COMPANY
 
 }; // Controllers
 
@@ -24,5 +25,6 @@ Route::group(
     /*
     ================================================== */
     Route::apiResource( 'category', CategoryController::class ); ## CATEGORY
+    Route::apiResource( 'company', CompanyController::class ); ## COMPANY
 
 }); // Route::group
