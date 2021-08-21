@@ -24,9 +24,9 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
-        $companies = $this->repository->with( 'category' )->latest()->paginate(); // Lista, ordena e pagina
+        $companies = $this->repository->getCompanies( $request->get( 'filter', '' ) ); // Filtra, lista, ordena e pagina os registros
 
         return CompanyResource::collection( $companies ); // Retorna uma "Resource/Collection"
     }
