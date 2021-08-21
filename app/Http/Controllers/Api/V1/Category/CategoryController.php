@@ -25,9 +25,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->repository->get();
+        $categories = $this->repository->latest()->paginate(); // Lista, ordena e pagina
 
-        return CategoryResource::collection( $categories );
+        return CategoryResource::collection( $categories ); // Retorna uma "Resource/Collection"
     }
 
     /**
@@ -38,9 +38,9 @@ class CategoryController extends Controller
      */
     public function store( StoreUpdateFormRequest $request )
     {
-        $category = $this->repository->create( $request->all() );
+        $category = $this->repository->create( $request->validated() ); // Cadastra
 
-        return new CategoryResource( $category );
+        return new CategoryResource( $category ); // Retorna uma "Resource/Collection"
     }
 
     /**
