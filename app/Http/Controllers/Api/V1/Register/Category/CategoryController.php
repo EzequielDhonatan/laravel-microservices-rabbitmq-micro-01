@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Api\V1\Register\Category\Category;
 use App\Http\Resources\Api\V1\Register\Category\CategoryResource;
+use App\Http\Requests\Api\V1\Register\Category\StoreUpdateFormRequest;
 
 class CategoryController extends Controller
 {
@@ -35,9 +36,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( StoreUpdateFormRequest $request )
     {
-        //
+        $category = $this->repository->create( $request->all() );
+
+        return new CategoryResource( $category );
     }
 
     /**
