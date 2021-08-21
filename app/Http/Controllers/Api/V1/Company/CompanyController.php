@@ -68,7 +68,7 @@ class CompanyController extends Controller
     {
         $company = $this->repository->where( 'uuid', $uuid )->firstOrFail(); // Recupera pelo "UUID"
 
-        $company->update( $request->validated() ); // Retorna uma "Resource/Collection"
+        $company->update( $request->validated() ); // Atualiza [Validando]
 
         return response()->json( [ 'message' => 'Updated' ] ); // Retornar a resposta de sucesso [Updated]
     }
