@@ -17,14 +17,13 @@ class CategoryTest extends TestCase
      */
     public function test_get_all_categories()
     {
-        Category::factory()->count( 6 )->create();
-
+        Category::factory()->count( 6 )->create(); //
         $response = $this->getJson( '/v1/category' ); //
 
         // $response->dump(); //
         $response->assertJsonCount( 6, 'data'  ); //
-
         $response->assertStatus( 200 ); //
-    }
+
+    } // test_get_all_categories
 
 } // CategoryTest
