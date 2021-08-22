@@ -10,20 +10,44 @@ use App\Models\Api\V1\Category\Category;
 
 class CategoryTest extends TestCase
 {
+    protected $endpoint = '/v1/category';
+
+    public function test_get_all_categories()
+    {
+        Category::factory()->count( 6 )->create();
+
+        $response = $this->getJson( $this->endpoint );
+
+        $response->assertJsonCount( 6, 'data' );
+        $response->assertStatus( 200 );
+    }
+
     /**
-     * Get all categories;
+     * Error Get Single Category
      *
      * @return void
      */
-    public function test_get_all_categories()
+    public function test_error_get_single_category()
     {
-        Category::factory()->count( 6 )->create(); //
-        $response = $this->getJson( '/v1/category' ); //
+        $category = '/fake-url';
 
-        // $response->dump(); //
-        $response->assertJsonCount( 6, 'data'  ); //
-        $response->assertStatus( 200 ); //
+        $response = $this->getJson( "{$this->endpoint}/{$category}" );
 
-    } // test_get_all_categories
+        $response->assertStatus( 404 );
+    }
+
+    /**
+     * Get Single Category
+     *
+     * @return void
+     */
+    public function test_get_single_category()
+    {
+        $category = Category::factory()->create();
+
+        $response = $this->getJson( "{$this->endpoint}/{$category->url}" );
+
+        $response->assertStatus( 200 );
+    }
 
 } // CategoryTest
