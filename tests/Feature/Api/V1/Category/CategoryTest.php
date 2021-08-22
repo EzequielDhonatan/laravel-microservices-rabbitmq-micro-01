@@ -10,13 +10,14 @@ use App\Models\Api\V1\Category\Category;
 
 class CategoryTest extends TestCase
 {
-    protected $endpoint = '/v1/category';
+    protected $version = 'v1';
+    protected $endpoint = 'category';
 
     public function test_get_all_categories()
     {
         Category::factory()->count( 6 )->create();
 
-        $response = $this->getJson( $this->endpoint );
+        $response = $this->getJson( "{$this->version}/{$this->endpoint}" );
 
         $response->assertJsonCount( 6, 'data' );
         $response->assertStatus( 200 );
@@ -45,7 +46,7 @@ class CategoryTest extends TestCase
     {
         $category = Category::factory()->create();
 
-        $response = $this->getJson( "{$this->endpoint}/{$category->url}" );
+        $response = $this->getJson( "{$this->version}/{$this->endpoint}/{$category->url}" );
 
         $response->assertStatus( 200 );
     }
