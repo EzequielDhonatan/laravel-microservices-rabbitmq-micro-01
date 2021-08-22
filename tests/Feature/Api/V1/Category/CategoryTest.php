@@ -81,4 +81,31 @@ class CategoryTest extends TestCase
         $response->assertStatus( 201 );
     }
 
+    /**
+     * Update Category
+     *
+     * @return void
+     */
+    public function test_update_category()
+    {
+        $category = Category::factory()->create();
+
+        $data = [
+            'title'         => 'Title (Updated)',
+            'description'   => 'Description (Updated)'
+        ]; //
+
+        // Not found
+        $response = $this->putJson( "{$this->version}/{$this->endpoint}/fake-category", $data ) ;
+        $response->assertStatus( 404 );
+
+        // Validation
+        $response = $this->putJson( "{$this->version}/{$this->endpoint}/{$category->url}", [] );
+        $response->assertStatus( 422 );
+
+        // Update
+        $response = $this->putJson( "{$this->version}/{$this->endpoint}/{$category->url}", $data );
+        $response->assertStatus( 200 );
+    }
+
 } // CategoryTest
