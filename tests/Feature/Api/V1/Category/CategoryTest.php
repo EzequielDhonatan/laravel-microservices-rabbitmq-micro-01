@@ -108,4 +108,22 @@ class CategoryTest extends TestCase
         $response->assertStatus( 200 );
     }
 
+    /**
+     * Destroy Category
+     *
+     * @return void
+     */
+    public function test_destroy_category()
+    {
+        $category = Category::factory()->create();
+
+        // Not found
+        $response = $this->deleteJson( "{$this->version}/{$this->endpoint}/fake-category" ) ;
+        $response->assertStatus( 404 );
+
+        // Delete
+        $response = $this->deleteJson( "{$this->version}/{$this->endpoint}/{$category->url}" );
+        $response->assertStatus( 204 );
+    }
+
 } // CategoryTest
