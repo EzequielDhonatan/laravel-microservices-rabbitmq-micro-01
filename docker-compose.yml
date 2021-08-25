@@ -6,7 +6,7 @@ services:
         build:
             args:
                 user: ezequieldhonatan
-                uid: 100
+                uid: 1000
             context: ./
             dockerfile: Dockerfile
         image: laravel-app
@@ -14,6 +14,8 @@ services:
         working_dir: /var/www/
         volumes:
             - ./:/var/www
+        depends_on:
+            - redis_micro_01
         networks:
             - microservices
 
@@ -26,7 +28,7 @@ services:
             - 443:443
         volumes:
             - ./:/var/www
-            - ./docker/nginx/:/etc/nginx/conf.d
+            - ./docker/nginx/:/etc/nginx/conf.d/
         networks:
             - microservices
 
@@ -46,7 +48,12 @@ services:
         networks:
             - microservices
 
+    ## Redis
+    redis_micro_01:
+        image: redis:latest
+        networks:
+            - microservices
+
 networks:
     microservices:
         driver: bridge
-
