@@ -13,6 +13,11 @@ class CategoryTest extends TestCase
     protected $version = 'v1';
     protected $endpoint = 'category';
 
+    /**
+     * Get All Categories
+     *
+     * @return void
+     */
     public function test_get_all_categories()
     {
         Category::factory()->count( 6 )->create();
