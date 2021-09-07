@@ -2,7 +2,7 @@
 
 namespace App\Services\Api\V1\Evaluation;
 
-use App\Services\Api\V1\Traits\Consumer\External\ConsumerExternalService;
+use Ezequieldhonatan\MicroservicesCommon\Services\Api\V1\Traits\External\ConsumerExternalService;
 
 class EvaluationService
 {
