@@ -8,14 +8,16 @@ use Illuminate\Http\Request;
 use App\Models\Api\V1\Company\Company;
 use App\Http\Resources\Api\V1\Company\CompanyResource;
 use App\Http\Requests\Api\V1\Company\StoreUpdateFormRequest;
+use App\Services\Api\V1\Evaluation\EvaluationService;
 
 class CompanyController extends Controller
 {
-    protected $repository;
+    protected $repository, $evaluationService;
 
-    public function __construct( Company $model )
+    public function __construct( Company $model, EvaluationService $evaluationService )
     {
-        $this->repository = $model;
+        $this->repository           = $model;
+        $this->evaluationService    = $evaluationService;
 
     } // __construct
 
@@ -54,7 +56,11 @@ class CompanyController extends Controller
     {
         $company = $this->repository->where( 'uuid', $uuid )->firstOrFail(); // Recupera pelo "UUID"
 
-        return new CompanyResource( $company ); // Retorna uma "Resource/Collection"
+        $evaluations = $this->evaluationService->getEvaluationsCompany( $uuid );
+
+        return ( new CompanyResource( $company ) )->additional(
+            [ 'evaluations' => json_decode( $evaluations ) ]
+        );
     }
 
     /**
